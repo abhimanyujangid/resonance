@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/src/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
+import { TooltipProvider } from "@/src/components/ui/tooltip";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
+        <TooltipProvider>
         {children}
+        </TooltipProvider>
         <Toaster/>
       </body>
     </html>
