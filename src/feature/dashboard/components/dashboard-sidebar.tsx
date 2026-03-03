@@ -107,23 +107,59 @@ export function DashboardSidebar() {
   ];
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="group">
       <SidebarHeader className="flex flex-col gap-4 pt-4">
         <div className="flex items-center gap-2 pl-1 group-data-[collapsed=icon]:justify-center group-data-[collapsed=icon]:pl-2">
-             <Image src="/logo.svg" alt="Resonance Logo" width={24} height={24} />
-             <span className="group-data-[collapsible=icon]:hidden font-semibold text-lg tracking-tighter text-foreground">
-                Resonance
-             </span>
-             <SidebarTrigger className="ml-auto lg:hidden" />
+          <Image src="/logo.svg" alt="Resonance Logo" width={24} height={24} />
+          <span className="text-foreground text-lg font-semibold tracking-tighter group-data-[collapsible=icon]:hidden">
+            Resonance
+          </span>
+          <SidebarTrigger className="ml-auto lg:hidden" />
         </div>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <OrganizationSwitcher
+              hidePersonal
+              fallback={
+                <Skeleton className="border-border h-9 w-full rounded-md border group-data-[collapsible=icon]:size-9" />
+              }
+              appearance={{
+                elements: {
+                  rootBox:
+                    "w-full group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center",
+
+                  organizationSwitcherTrigger:
+                    "w-full flex items-center justify-between bg-background border border-border rounded-md px-2 py-1.5 gap-2 transition-colors hover:bg-muted group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:p-1.5",
+
+                  organizationPreview:
+                    "flex items-center gap-2 group-data-[collapsible=icon]:gap-0",
+
+                  organizationPreviewAvatarBox: "size-6 rounded-md shrink-0",
+
+                  organizationPreviewTextContainer:
+                    "text-xs font-medium tracking-tight text-foreground group-data-[collapsible=icon]:hidden group-data-[collapsible=icon]:w-0 group-data-[collapsible=icon]:overflow-hidden",
+
+                  organizationPreviewMainIdentifier:
+                    "text-[13px] group-data-[collapsible=icon]:hidden",
+
+                  organizationPreviewSecondaryIdentifier:
+                    "group-data-[collapsible=icon]:hidden",
+
+                  organizationSwitcherTriggerIcon:
+                    "size-4 text-sidebar-foreground group-data-[collapsible=icon]:hidden",
+                },
+              }}
+            />
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
-      <div className="border-b border-dashed border-border">
-        <SidebarContent>
-          <NavSelection label="Main" pathName={pathname} items={mainMenuItems} />
-          <SidebarSeparator className="my-2" />
-          <NavSelection label="Others" pathName={pathname} items={othersMenuItems} />
-        </SidebarContent>
-      </div>
+      <div className="border-border border-b border-dashed" />
+      <SidebarContent>
+        <NavSelection label="Main" pathName={pathname} items={mainMenuItems} />
+        <SidebarSeparator className="my-2" />
+        <NavSelection label="Others" pathName={pathname} items={othersMenuItems} />
+      </SidebarContent>
+      <SidebarRail />
     </Sidebar>
   );
 }
