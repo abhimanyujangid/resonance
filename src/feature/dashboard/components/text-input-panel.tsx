@@ -6,7 +6,7 @@ import { Badge } from "@/src/components/ui/badge";
 import { Button } from "@/src/components/ui/button";
 import { Textarea } from "@/src/components/ui/textarea";
 
-import { TEXT_MAX_LENGTH } from "@/src/feature/text-to-speech/data/constant";
+import { SUGGESTIONS, TEXT_MAX_LENGTH } from "@/src/feature/text-to-speech/data/constant";
 import { useRouter } from "next/navigation";
 import { cn } from "@/src/lib/utils";
 
