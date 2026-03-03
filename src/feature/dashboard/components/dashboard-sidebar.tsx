@@ -27,7 +27,7 @@ import {
 } from "@/src/components/ui/sidebar";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, User } from "lucide-react";
 import { Skeleton } from "@/src/components/ui/skeleton";
 import { OrganizationSwitcher, UserButton, useClerk } from "@clerk/nextjs";
 import { Home, LayoutGrid, AudioLines, Volume2, Settings, Headphones } from "lucide-react";
@@ -69,6 +69,7 @@ function NavSelection({ label, pathName, items }: NavSelectionProps) {
                 }
                 onClick={item.onClick}
                 tooltip={item.title}
+                className="data- [active=true]:border-border data-[active=true] :shadow-[0px_1px_1px_0px_rgba(44,54,53,0.03), inset_0px_0px_0px_2px_white] h-9 border border-transparent px-3 py-2 text-[13px] font-medium tracking-tight"
               >
                 {item.url ? (
                   <Link href={item.url} className="flex items-center gap-2">
@@ -129,7 +130,7 @@ export function DashboardSidebar() {
                     "w-full group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center",
 
                   organizationSwitcherTrigger:
-                    "w-full flex items-center justify-between bg-background border border-border rounded-md px-2 py-1.5 gap-2 transition-colors hover:bg-muted group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:p-1.5",
+                    "w-full flex items-center justify-between bg-background border border-border rounded-md px-2 py-1.5 gap-2 transition-colors hover:bg-muted group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:p-1.5 :shadow-[0px_1px_1px_0px_rgba(44,54,53,0.03)",
 
                   organizationPreview:
                     "flex items-center gap-2 group-data-[collapsible=icon]:gap-0",
@@ -142,8 +143,7 @@ export function DashboardSidebar() {
                   organizationPreviewMainIdentifier:
                     "text-[13px] group-data-[collapsible=icon]:hidden",
 
-                  organizationPreviewSecondaryIdentifier:
-                    "group-data-[collapsible=icon]:hidden",
+                  organizationPreviewSecondaryIdentifier: "group-data-[collapsible=icon]:hidden",
 
                   organizationSwitcherTriggerIcon:
                     "size-4 text-sidebar-foreground group-data-[collapsible=icon]:hidden",
@@ -159,6 +159,31 @@ export function DashboardSidebar() {
         <SidebarSeparator className="my-2" />
         <NavSelection label="Others" pathName={pathname} items={othersMenuItems} />
       </SidebarContent>
+      <div className="border-border border-b border-dashed" />
+      <SidebarFooter className="gap-3 py-3">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <UserButton
+              showName={true}
+              fallback={
+                <Skeleton className="border-border h-8.5 w-full rounded-md border bg-white group-data-[collapsible=icon]:size-8" />
+              }
+              appearance={{
+                elements: {
+                  rootBox:
+                    "w-full group-data-[collapsible=icon]:w-auto group-data-[collapsible=icon]:flex! group-data-[collapsible=icon]:justify-center",
+                  userButtonTrigger:
+                    "w-full! justify-between! bg-white! border! border-border! rounded-md! pl-1! pr-2! py-1! shadow-[0px_1px_1.5px_0px_rgba(44,54,53,0.03)]! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:p-1! group-data-[collapsible=icon]:after:hidden! [--border:color-mix(in_srgb,transparent,var(--clerk-color-neutral,#000000)_15%)]!",
+                  userButtonBox: "flex-row-reverse! gap-2!",
+                  userButtonOuterIdentifier:
+                    "text-[13px]! tracking-tight! font-medium! text-foreground! pl-0! group-data-[collapsible=icon]:hidden!",
+                  userButtonAvatarBox: "size-6!",
+                },
+              }}
+            />
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );
