@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ArrowRight, Sparkles, Type, BookOpen, Megaphone, Mic } from "lucide-react";
+import { ArrowRight, Sparkles, Type, BookOpen, Megaphone, Mic, Coins } from "lucide-react";
 import { Badge } from "@/src/components/ui/badge";
 import { Button } from "@/src/components/ui/button";
 import { Textarea } from "@/src/components/ui/textarea";
@@ -48,7 +48,7 @@ export function TextInputPanel() {
         <div className="rounded-[18px] bg-[#F9F9F9] p-1">
           <div className="rounded-[16px] bg-white drop-shadow-xs">
             {/* Textarea area */}
-            <div className="p-4 pb-2">
+            <div className="p-1 pb-2">
               <Textarea
                 ref={textareaRef}
                 value={text}
@@ -57,7 +57,7 @@ export function TextInputPanel() {
                 onBlur={() => setIsFocused(false)}
                 placeholder="Start typing or paste your text here..."
                 maxLength={TEXT_MAX_LENGTH}
-                className="placeholder:text-muted-foreground/50 min-h-28 resize-none border-0 bg-transparent p-0 text-[15px] leading-relaxed shadow-none focus:ring-0 focus-visible:ring-0"
+                className="placeholder:text-muted-foreground/50 min-h-28 resize-none border-0 bg-transparent p-2 text-[15px] leading-relaxed shadow-none focus:ring-0 focus-visible:ring-0"
               />
             </div>
 
@@ -97,6 +97,7 @@ export function TextInputPanel() {
                       />
                     </svg>
                   </div>
+
                   <span
                     className={cn(
                       "text-xs tabular-nums transition-colors",
