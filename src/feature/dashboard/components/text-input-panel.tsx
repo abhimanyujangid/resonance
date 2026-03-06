@@ -36,7 +36,7 @@ export function TextInputPanel() {
       {/* Main input card with gradient border */}
       <div
         className={cn(
-          "rounded-[22px] p-0.5 shadow-[0_0_0_4px_white] transition-all duration-500",
+          "rounded-[20px] p-0.5 shadow-[0_0_0_4px_white] transition-all duration-500",
           isFocused
             ? "bg-linear-185 from-[#8b5cf6] from-15% via-[#06b6d4] via-50% to-[#10b981] to-85%"
             : "bg-linear-185 from-[#ff8ee3] from-15% via-[#57d7e0] via-39% to-[#dbf1f2] to-85%",
@@ -45,8 +45,8 @@ export function TextInputPanel() {
         {/* Using px values for border-radius to ensure proper gradient border math (outer - padding = inner). */}
         {/* Standard classes like rounded-4xl use CSS calc() which doesn't align cleanly at corners. */}
 
-        <div className="rounded-4xl bg-[#F9F9F9] p-1">
-          <div className="rounded-2xl bg-white drop-shadow-xs">
+        <div className="rounded-[18px] bg-[#F9F9F9] p-1">
+          <div className="rounded-[16px] bg-white drop-shadow-xs">
             {/* Textarea area */}
             <div className="p-4 pb-2">
               <Textarea
