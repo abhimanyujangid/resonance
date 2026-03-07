@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
-import { QuickAction } from "../data/quick-action";
+import { QuickAction } from "@/src/feature/dashboard/data/quick-action";
 import { cn } from "@/src/lib/utils";
 
 

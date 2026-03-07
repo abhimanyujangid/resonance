@@ -1,6 +1,7 @@
 import { BookOpen, Megaphone, Mic, Type } from "lucide-react";
 
 export const TEXT_MAX_LENGTH = 5000;
+export const COST_PER_UNIT = 0.0003; // Example cost per unit of text
 
 export const SUGGESTIONS = [
   {
